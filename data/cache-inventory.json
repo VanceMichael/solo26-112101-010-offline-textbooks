@@ -1,0 +1,17 @@
+[
+  {
+    "asset": "a1",
+    "sha256": "336d5bcd8ce35045a315a5fe526ced79a7faa310833a2e8b00f5b90aa1eb453d",
+    "base64": "QVVESU86cGxhbnQtcm9vdC1ydW4xOmdyb3ZlCg=="
+  },
+  {
+    "asset": "s1",
+    "sha256": "9bf23646925cfb5591e9796f32602d103e0176d451966b51956e51ebd41259ff",
+    "base64": "Q0xJUDpmaWVsZC1hdWRpdDpidW5kbGUtWAo="
+  },
+  {
+    "asset": "e1",
+    "sha256": "51ac08bc4164f4f24b80fd47618e2a28c13f2745fa0d50f523312c8aeef91323",
+    "base64": "TEVTU09OOmZvbGxvdy1yaXZlcjpjbGFzczMK"
+  }
+]

@@ -1,0 +1,501 @@
+{
+  "stages": {
+    "initial": {
+      "GET /publisher/releases": {
+        "data": [
+          {
+            "book": "nature",
+            "release": 1,
+            "scope": [
+              "grade3",
+              "east"
+            ],
+            "complete": true,
+            "refs": [
+              {
+                "ref": "field",
+                "asset": "s1",
+                "grant": "N-11"
+              },
+              {
+                "ref": "lab",
+                "asset": "e1",
+                "grant": "N-12"
+              },
+              {
+                "ref": "sound",
+                "asset": "a1",
+                "grant": "N-13"
+              }
+            ]
+          },
+          {
+            "book": "nature",
+            "release": 2,
+            "scope": [
+              "grade3",
+              "east"
+            ],
+            "complete": false,
+            "refs": [
+              {
+                "ref": "field",
+                "asset": "s1",
+                "grant": "N-21"
+              },
+              {
+                "ref": "lab",
+                "asset": "lab",
+                "grant": "N-22"
+              },
+              {
+                "ref": "sound",
+                "asset": "a2",
+                "grant": "N-23"
+              }
+            ]
+          },
+          {
+            "book": "speech",
+            "release": 3,
+            "scope": [
+              "grade3",
+              "east"
+            ],
+            "complete": true,
+            "refs": [
+              {
+                "ref": "field",
+                "asset": "s1",
+                "grant": "S-31"
+              },
+              {
+                "ref": "home",
+                "asset": "e2",
+                "grant": "S-32"
+              }
+            ]
+          }
+        ]
+      },
+      "GET /publisher/media": {
+        "data": [
+          {
+            "asset": "a1",
+            "sha256": "336d5bcd8ce35045a315a5fe526ced79a7faa310833a2e8b00f5b90aa1eb453d",
+            "bytes": 28,
+            "download": "/publisher/media/a1"
+          },
+          {
+            "asset": "a2",
+            "sha256": "efeaee3fdc2c579693c70966802ace432da947c432d6f51132f6c92acf2915d7",
+            "bytes": 28,
+            "download": "/mirrors/a/delta",
+            "base": "336d5bcd8ce35045a315a5fe526ced79a7faa310833a2e8b00f5b90aa1eb453d",
+            "patchSha": "928c4465fc4f03599ab65d54ae9d3d13537a2eed5da1c388c3628bbca13ab51d",
+            "slices": [
+              {
+                "url": "/mirrors/a/delta",
+                "range": [
+                  0,
+                  32
+                ],
+                "until": 19,
+                "cost": 1
+              },
+              {
+                "url": "/mirrors/b/delta",
+                "range": [
+                  32,
+                  113
+                ],
+                "until": 21,
+                "cost": 2
+              }
+            ]
+          },
+          {
+            "asset": "s1",
+            "sha256": "9bf23646925cfb5591e9796f32602d103e0176d451966b51956e51ebd41259ff",
+            "bytes": 26,
+            "download": "/publisher/media/s1"
+          },
+          {
+            "asset": "e1",
+            "sha256": "51ac08bc4164f4f24b80fd47618e2a28c13f2745fa0d50f523312c8aeef91323",
+            "bytes": 27,
+            "download": "/publisher/media/e1"
+          },
+          {
+            "asset": "e2",
+            "sha256": "b3ecee624262b1cc490d903ec6cc7a6568ca45575ef024adaa6582056135af98",
+            "bytes": 27,
+            "download": "/publisher/media/e2"
+          },
+          {
+            "asset": "lab",
+            "sha256": "2f4f11908357278111453c1a02c34e71e5df8eac64e911db52f636cf25d74e7a",
+            "bytes": 23,
+            "download": "/publisher/media/lab",
+            "until": 18,
+            "cost": 2
+          }
+        ]
+      },
+      "GET /publisher/media/a1": {
+        "type": "application/octet-stream",
+        "headers": {
+          "Content-Disposition": "attachment; filename=\"a1.bin\""
+        },
+        "base64": "QVVESU86cGxhbnQtcm9vdC1ydW4xOmdyb3ZlCg=="
+      },
+      "GET /publisher/media/s1": {
+        "type": "application/octet-stream",
+        "headers": {
+          "Content-Disposition": "attachment; filename=\"s1.bin\""
+        },
+        "base64": "Q0xJUDpmaWVsZC1hdWRpdDpidW5kbGUtWAo="
+      },
+      "GET /publisher/media/e1": {
+        "type": "application/octet-stream",
+        "headers": {
+          "Content-Disposition": "attachment; filename=\"e1.bin\""
+        },
+        "base64": "TEVTU09OOmZvbGxvdy1yaXZlcjpjbGFzczMK"
+      },
+      "GET /publisher/media/e2": {
+        "type": "application/octet-stream",
+        "headers": {
+          "Content-Disposition": "attachment; filename=\"e2.bin\""
+        },
+        "base64": "TEVTU09OOmZvbGxvdy1yaXZlcjpjbGFzczQK"
+      },
+      "GET /publisher/media/lab": {
+        "status": 425,
+        "data": {
+          "message": "新版实验页待同步"
+        }
+      },
+      "GET /mirrors/a/delta": {
+        "type": "application/octet-stream",
+        "headers": {
+          "Content-Disposition": "attachment; filename=\"patch-head.bin\""
+        },
+        "base64": "eyJiYXNlIjoiMzM2ZDViY2Q4Y2UzNTA0NWEzMTVhNWY="
+      },
+      "GET /mirrors/b/delta": {
+        "type": "application/octet-stream",
+        "headers": {
+          "Content-Disposition": "attachment; filename=\"patch-tail.bin\""
+        },
+        "base64": "ZTUyNmNlZDc5YTdmYWEzMTA4MzNhMmU4YjAwZjViOTBhYTFlYjQ1M2QiLCJvZmZzZXQiOjIwLCJyZW1vdmUiOjEsImJ5dGVzIjoiTWc9PSJ9"
+      },
+      "GET /publisher/withdrawals": {
+        "data": {
+          "revision": 1,
+          "items": []
+        }
+      },
+      "GET /school/window": {
+        "data": {
+          "now": 15,
+          "diskBytes": 120,
+          "billedReadLimit": 4,
+          "endsAt": 20
+        }
+      },
+      "GET /school/reservations": {
+        "data": [
+          {
+            "reservation": "R1",
+            "class": "三甲",
+            "device": "TAB-1",
+            "scope": [
+              "grade3",
+              "east"
+            ],
+            "book": "nature",
+            "release": 1,
+            "refs": [
+              "field",
+              "lab"
+            ],
+            "priority": 1,
+            "startsAt": 18
+          },
+          {
+            "reservation": "R2",
+            "class": "三乙",
+            "device": "TAB-1",
+            "scope": [
+              "grade3",
+              "east"
+            ],
+            "book": "nature",
+            "release": 2,
+            "refs": [
+              "lab",
+              "sound"
+            ],
+            "priority": 3,
+            "startsAt": 21
+          },
+          {
+            "reservation": "R3",
+            "class": "三丙",
+            "device": "TAB-2",
+            "scope": [
+              "grade3",
+              "east"
+            ],
+            "book": "speech",
+            "release": 3,
+            "refs": [
+              "field",
+              "home"
+            ],
+            "priority": 2,
+            "startsAt": 19
+          }
+        ]
+      },
+      "GET /devices/TAB-1/ack": {
+        "data": {
+          "book": "nature",
+          "release": 1,
+          "state": "active",
+          "plan": "RES-101",
+          "refs": {
+            "field": "9bf23646925cfb5591e9796f32602d103e0176d451966b51956e51ebd41259ff",
+            "lab": "51ac08bc4164f4f24b80fd47618e2a28c13f2745fa0d50f523312c8aeef91323"
+          }
+        }
+      },
+      "GET /devices/TAB-2/ack": {
+        "data": {
+          "book": "speech",
+          "release": 3,
+          "state": "staged",
+          "plan": "RES-301",
+          "refs": {
+            "field": "9bf23646925cfb5591e9796f32602d103e0176d451966b51956e51ebd41259ff"
+          }
+        }
+      },
+      "POST /devices/TAB-2/install": {
+        "status": 202,
+        "data": {
+          "state": "received",
+          "plan": "RES-302"
+        }
+      }
+    },
+    "sync": {
+      "GET /publisher/releases": {
+        "data": [
+          {
+            "book": "nature",
+            "release": 1,
+            "scope": [
+              "grade3",
+              "east"
+            ],
+            "complete": true,
+            "refs": [
+              {
+                "ref": "field",
+                "asset": "s1",
+                "grant": "N-11"
+              },
+              {
+                "ref": "lab",
+                "asset": "e1",
+                "grant": "N-12"
+              },
+              {
+                "ref": "sound",
+                "asset": "a1",
+                "grant": "N-13"
+              }
+            ]
+          },
+          {
+            "book": "nature",
+            "release": 2,
+            "scope": [
+              "grade3",
+              "east"
+            ],
+            "complete": true,
+            "refs": [
+              {
+                "ref": "field",
+                "asset": "s1",
+                "grant": "N-21"
+              },
+              {
+                "ref": "lab",
+                "asset": "lab",
+                "grant": "N-22"
+              },
+              {
+                "ref": "sound",
+                "asset": "a2",
+                "grant": "N-23"
+              }
+            ]
+          },
+          {
+            "book": "speech",
+            "release": 3,
+            "scope": [
+              "grade3",
+              "east"
+            ],
+            "complete": true,
+            "refs": [
+              {
+                "ref": "field",
+                "asset": "s1",
+                "grant": "S-31"
+              },
+              {
+                "ref": "home",
+                "asset": "e2",
+                "grant": "S-32"
+              }
+            ]
+          }
+        ]
+      },
+      "GET /publisher/media/lab": {
+        "type": "application/octet-stream",
+        "headers": {
+          "Content-Disposition": "attachment; filename=\"lab.bin\""
+        },
+        "base64": "TEFCOnBsYW50LXJvb3Q6djItc2FmZQo="
+      },
+      "GET /school/window": {
+        "data": {
+          "now": 17,
+          "diskBytes": 120,
+          "billedReadLimit": 4,
+          "endsAt": 20
+        }
+      }
+    },
+    "revoked": {
+      "GET /publisher/releases": {
+        "data": [
+          {
+            "book": "nature",
+            "release": 1,
+            "scope": [
+              "grade3",
+              "east"
+            ],
+            "complete": true,
+            "refs": [
+              {
+                "ref": "field",
+                "asset": "s1",
+                "grant": "N-11"
+              },
+              {
+                "ref": "lab",
+                "asset": "e1",
+                "grant": "N-12"
+              },
+              {
+                "ref": "sound",
+                "asset": "a1",
+                "grant": "N-13"
+              }
+            ]
+          },
+          {
+            "book": "nature",
+            "release": 2,
+            "scope": [
+              "grade3",
+              "east"
+            ],
+            "complete": true,
+            "refs": [
+              {
+                "ref": "field",
+                "asset": "s1",
+                "grant": "N-21"
+              },
+              {
+                "ref": "lab",
+                "asset": "lab",
+                "grant": "N-22"
+              },
+              {
+                "ref": "sound",
+                "asset": "a2",
+                "grant": "N-23"
+              }
+            ]
+          },
+          {
+            "book": "speech",
+            "release": 3,
+            "scope": [
+              "grade3",
+              "east"
+            ],
+            "complete": true,
+            "refs": [
+              {
+                "ref": "field",
+                "asset": "s1",
+                "grant": "S-31"
+              },
+              {
+                "ref": "home",
+                "asset": "e2",
+                "grant": "S-32"
+              }
+            ]
+          }
+        ]
+      },
+      "GET /publisher/withdrawals": {
+        "data": {
+          "revision": 2,
+          "items": [
+            {
+              "book": "nature",
+              "release": 1,
+              "ref": "field",
+              "grant": "N-11",
+              "effectiveAt": 18
+            }
+          ]
+        }
+      },
+      "GET /school/window": {
+        "data": {
+          "now": 18,
+          "diskBytes": 120,
+          "billedReadLimit": 4,
+          "endsAt": 20
+        }
+      },
+      "GET /devices/TAB-2/ack": {
+        "data": {
+          "book": "speech",
+          "release": 3,
+          "state": "active",
+          "plan": "RES-302",
+          "refs": {
+            "field": "9bf23646925cfb5591e9796f32602d103e0176d451966b51956e51ebd41259ff",
+            "home": "b3ecee624262b1cc490d903ec6cc7a6568ca45575ef024adaa6582056135af98"
+          }
+        }
+      }
+    }
+  }
+}

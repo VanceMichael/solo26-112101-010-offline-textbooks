@@ -1,0 +1,106 @@
+[
+  {
+    "path": "/publisher/releases",
+    "stage": "initial",
+    "method": "GET",
+    "status": 200,
+    "expected": {
+      "path": [
+        1,
+        "complete"
+      ],
+      "value": false
+    }
+  },
+  {
+    "path": "/publisher/media/lab",
+    "stage": "initial",
+    "method": "GET",
+    "status": 425,
+    "expected": {
+      "path": [
+        "message"
+      ],
+      "value": "新版实验页待同步"
+    }
+  },
+  {
+    "path": "/mirrors/a/delta",
+    "stage": "initial",
+    "method": "GET",
+    "status": 200,
+    "expected": {
+      "hex": "7b2262617365223a223333366435626364386365333530343561333135613566"
+    }
+  },
+  {
+    "path": "/mirrors/b/delta",
+    "stage": "initial",
+    "method": "GET",
+    "status": 200,
+    "expected": {
+      "hex": "6535323663656437396137666161333130383333613265386230306635623930616131656234353364222c226f6666736574223a32302c2272656d6f7665223a312c226279746573223a224d673d3d227d"
+    }
+  },
+  {
+    "path": "/devices/TAB-2/ack",
+    "stage": "initial",
+    "method": "GET",
+    "status": 200,
+    "expected": {
+      "path": [
+        "state"
+      ],
+      "value": "staged"
+    }
+  },
+  {
+    "path": "/publisher/releases",
+    "stage": "sync",
+    "method": "GET",
+    "status": 200,
+    "expected": {
+      "path": [
+        1,
+        "complete"
+      ],
+      "value": true
+    }
+  },
+  {
+    "path": "/publisher/media/lab",
+    "stage": "sync",
+    "method": "GET",
+    "status": 200,
+    "expected": {
+      "hex": "4c41423a706c616e742d726f6f743a76322d736166650a"
+    }
+  },
+  {
+    "path": "/publisher/withdrawals",
+    "stage": "revoked",
+    "method": "GET",
+    "status": 200,
+    "expected": {
+      "path": [
+        "items",
+        0,
+        "grant"
+      ],
+      "value": "N-11"
+    }
+  },
+  {
+    "path": "/devices/TAB-2/ack",
+    "stage": "revoked",
+    "method": "GET",
+    "status": 200,
+    "expected": {
+      "path": [
+        "refs",
+        "field"
+      ],
+      "value": "9bf23646925cfb5591e9796f32602d103e0176d451966b51956e51ebd41259ff"
+    }
+  }
+]

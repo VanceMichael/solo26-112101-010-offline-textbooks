@@ -1,0 +1,13 @@
+{
+  "name": "offline-textbooks",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": "22.23.4"
+  },
+  "scripts": {
+    "sources": "node sources/server.mjs",
+    "test": "node --test test/*.test.mjs"
+  }
+}
