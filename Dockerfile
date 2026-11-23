@@ -3,6 +3,7 @@ WORKDIR /app
 COPY package.json package-lock.json ./
 RUN npm ci --no-audit --no-fund
 COPY sources ./sources
+COPY service ./service
 COPY data ./data
 COPY test ./test
 CMD ["npm", "test"]

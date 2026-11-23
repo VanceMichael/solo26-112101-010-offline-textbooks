@@ -11,3 +11,36 @@
 `data/sources.json` 保存原始报文及站点页面。连续响应由来源按同一进程内的观察次数提供。阶段从 `initial` 启动，本地演练人员可用 `POST /scenario/阶段名` 切换，未覆盖的路由延用初始响应。切换不清空来源的请求记录。重开服务会复位。
 
 执行 `npm test` 核对来源契约。依赖锁仅包含 Node.js 标准库运行所需的项目清单。容器方式可先执行 `docker build -t offline-textbooks-sources .`，再执行 `docker run --rm offline-textbooks-sources`。镜像准备完成后的验证不需要外网。
+
+## 校端接收服务
+
+`npm run service` 启动校端接收服务（默认 `127.0.0.1:4181`）。可用环境变量：`PORT`（服务端口）、`SOURCE_URL`（演练来源，默认 `http://127.0.0.1:4180`）、`STATE_PATH`（状态文件，默认 `data/service-state.json`）、`CACHE_DIR`（字节缓存目录，默认 `data/service-cache`）、`CACHE_INVENTORY`（窗口开始前校端已有原件清单，默认 `data/cache-inventory.json`）。
+
+### 接口
+
+- `POST /sync`：拉取发布声明、资源目录、撤回列表、接收窗口、班级预约与各设备凭据，给出本窗口领取规划；`POST /receive` 按规划领取并向设备提交安装描述；`POST /run` 相当于两者连做。
+- `GET /plan`、`GET /reservations`、`GET /reservations/:id`：教研员视角——目标版、实际可用版、阻塞原因与受影响的课堂入口。
+- `POST /reservations/:id/reselect`：登记教师重新选版（如 `{"release": 2}`），清除该预约的缺口标记后按新目标重排。
+- `GET /classroom-records`：激活回执落成的课堂记录，逐入口对照当时引用与今天是否还可再次装载。
+- `GET /cache`、`GET /devices/:device`、`GET /status`：字节缓存及各教材授权有效性、设备凭据、窗口用量。
+
+### 领取与判定规则
+
+- 字节缓存按内容指纹寻址，同名文件不会覆盖在用课堂版；相同字节在各教材授权各自有效时可共享，有效期与逻辑键跳转关系不跨教材沿用。
+- 规划按课堂优先顺序分配一次接收额度与磁盘：同一预约的下载整套分配，额度或磁盘不足时保持原状并说明缺口，证明哪些版本可完备领取、哪些只能部分准备。
+- 更新块按资源目录公示的半开区间向各镜像领取，装配后核对更新块指纹，应用到指定基件再核对目标指纹。
+- 只有设备回执完整激活（`state=active` 且预约入口指纹齐全）才判定可离线使用；提交受理不代表激活。服务重启后凭状态文件与缓存继续，不重复提交安装。
+- 出版社撤回的授权在排课上标出缺口并等待教师重新选版，不静默换题、不静默恢复；其他教材对同一字节的独立有效引用继续可用。
+
+### 演练流程
+
+```sh
+npm run sources &          # 演练来源，默认 4180
+npm run service &          # 校端服务，默认 4181
+curl -X POST localhost:4181/run                      # 初始窗口：同步并领取
+curl -X POST localhost:4180/scenario/sync            # 出版社封版
+curl -X POST localhost:4181/sync
+curl -X POST localhost:4180/scenario/revoked         # 授权撤回
+curl -X POST localhost:4181/sync
+curl localhost:4181/reservations/R1                  # 教研员核查
+```
